@@ -1,6 +1,5 @@
-const Joi = require('joi');
+const Joi = require("joi");
 
-// Validation schema for question creation
 const createQuestionSchema = Joi.object({
   title: Joi.string().required(),
   description: Joi.string().required(),
@@ -14,7 +13,6 @@ const createQuestionSchema = Joi.object({
     .required(),
 });
 
-// Validation schema for question editing
 const editQuestionSchema = Joi.object({
   title: Joi.string(),
   description: Joi.string(),

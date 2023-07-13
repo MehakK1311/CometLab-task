@@ -1,4 +1,4 @@
-const Question = require('../models/Question');
+const Question = require("../models/Question");
 
 const createQuestion = async (req, res) => {
   try {
@@ -8,7 +8,7 @@ const createQuestion = async (req, res) => {
 
     res.status(201).json(question);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to create question' });
+    res.status(500).json({ error: "Failed to create question" });
   }
 };
 
@@ -24,12 +24,12 @@ const editQuestion = async (req, res) => {
     );
 
     if (!question) {
-      return res.status(404).json({ error: 'Question not found' });
+      return res.status(404).json({ error: "Question not found" });
     }
 
     res.json(question);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to edit question' });
+    res.status(500).json({ error: "Failed to edit question" });
   }
 };
 
@@ -40,12 +40,12 @@ const deleteQuestion = async (req, res) => {
     const question = await Question.findByIdAndDelete(id);
 
     if (!question) {
-      return res.status(404).json({ error: 'Question not found' });
+      return res.status(404).json({ error: "Question not found" });
     }
 
-    res.json({ message: 'Question deleted successfully' });
+    res.json({ message: "Question deleted successfully" });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to delete question' });
+    res.status(500).json({ error: "Failed to delete question" });
   }
 };
 
@@ -62,7 +62,7 @@ const getQuestions = async (req, res) => {
 
     res.json(questions);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to get questions' });
+    res.status(500).json({ error: "Failed to get questions" });
   }
 };
 

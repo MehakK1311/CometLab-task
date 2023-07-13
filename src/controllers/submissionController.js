@@ -1,6 +1,6 @@
-const axios = require('axios');
-const Submission = require('../models/Submission');
-const Question = require('../models/Question');
+const axios = require("axios");
+const Submission = require("../models/Submission");
+const Question = require("../models/Question");
 
 const checkSolution = async (req, res) => {
   try {
@@ -9,7 +9,7 @@ const checkSolution = async (req, res) => {
     const question = await Question.findById(questionId);
 
     if (!question) {
-      return res.status(404).json({ error: 'Question not found' });
+      return res.status(404).json({ error: "Question not found" });
     }
 
     const response = await axios.post(
@@ -26,12 +26,12 @@ const checkSolution = async (req, res) => {
     const result = response.data.result;
     let submissionResult;
 
-    if (result === 'wrong') {
-      submissionResult = 'wrong';
-    } else if (result === 'compilation error' || result === 'runtime error') {
-      submissionResult = 'error';
+    if (result === "wrong") {
+      submissionResult = "wrong";
+    } else if (result === "compilation error" || result === "runtime error") {
+      submissionResult = "error";
     } else {
-      submissionResult = 'success';
+      submissionResult = "success";
     }
 
     const submission = await Submission.create({
@@ -43,7 +43,7 @@ const checkSolution = async (req, res) => {
 
     res.json({ result: submissionResult, error: response.data.stderr || null });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to check solution' });
+    res.status(500).json({ error: "Failed to check solution" });
   }
 };
 
@@ -60,7 +60,7 @@ const getSubmissions = async (req, res) => {
 
     res.json(submissions);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to get submissions' });
+    res.status(500).json({ error: "Failed to get submissions" });
   }
 };
 

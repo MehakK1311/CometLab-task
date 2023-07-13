@@ -1,14 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const submissionSchema = new mongoose.Schema({
   question: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Question',
+    ref: "Question",
     required: true,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
     required: true,
   },
   solution: {
@@ -17,9 +17,9 @@ const submissionSchema = new mongoose.Schema({
   },
   result: {
     type: String,
-    enum: ['success', 'error', 'wrong'],
+    enum: ["success", "error", "wrong"],
     required: true,
   },
 });
 
-module.exports = mongoose.model('Submission', submissionSchema);
+module.exports = mongoose.model("Submission", submissionSchema);

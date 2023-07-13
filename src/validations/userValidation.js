@@ -1,14 +1,12 @@
-const Joi = require('joi');
+const Joi = require("joi");
 
-// Validation schema for user signup
 const signupSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().email().required(),
   password: Joi.string().required(),
-  role: Joi.string().valid('admin', 'participant').default('participant'),
+  role: Joi.string().valid("admin", "participant").default("participant"),
 });
 
-// Validation schema for user login
 const loginSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required(),
